@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/dedb547a55.js" crossorigin="anonymous"></script>
 <!--    Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>BLOG</title>
+    <title>SomeBlog Home Page</title>
 
 </head>
 <body>
@@ -32,7 +32,7 @@
                     <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
                     &nbsp;
                     <i class="far fa-calendar">&nbsp;</i><span>2020, April 23</span>
-                    <span class="post-category">Politics</span>
+                    <a href="#" class="post-category">Politics</a>
                 </div>
             </div>
             <div class="post">
@@ -42,7 +42,7 @@
                     <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
                     &nbsp;
                     <i class="far fa-calendar">&nbsp;</i><span>2020, April 20</span>
-                    <span class="post-category">Tech</span>
+                    <a href="#" class="post-category">Tech</a>
                 </div>
             </div>
             <div class="post">
@@ -52,7 +52,7 @@
                     <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
                     &nbsp;
                     <i class="far fa-calendar">&nbsp;</i><span>2020, April 23</span>
-                    <span class="post-category">Politics</span>
+                    <a href="#" class="post-category">Politics</a>
                 </div>
             </div>
             <div class="post">
@@ -62,7 +62,7 @@
                     <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
                     &nbsp;
                     <i class="far fa-calendar">&nbsp;</i><span>2020, April 20</span>
-                    <span class="post-category">Tech</span>
+                    <a href="#" class="post-category">Tech</a>
                 </div>
             </div>
             <div class="post">
@@ -72,7 +72,7 @@
                     <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
                     &nbsp;
                     <i class="far fa-calendar">&nbsp;</i><span>2020, April 23</span>
-                    <span class="post-category">Politics</span>
+                    <a href="#" class="post-category">Politics</a>
                 </div>
             </div>
         </div>
@@ -82,7 +82,8 @@
 <!--    Main Content Section-->
     <div class="main-content-wrapper clearfix">
         <div class="main-content">
-            <h1 class="recent-posts-title">Recent Posts</h1>
+            <h2 class="recent-posts-title">Recent Posts</h2>
+            <br>
             
             <div class="post">
                 <img class="post-image" src="images/image_2.jpg" alt="">
@@ -95,7 +96,8 @@
                         Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
                         Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.html" class="btn read-more">Read More...</a>
+                    <a href="#" class="post-category">Tech</a>
 
                 </div>
             </div>
@@ -110,7 +112,9 @@
                         Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
                         Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.html" class="btn read-more">Read More...</a>
+                    <a href="#" class="post-category">Politics</a>
+
 
                 </div>
             </div>
@@ -125,7 +129,9 @@
                         Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
                         Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.html" class="btn read-more">Read More...</a>
+                    <a href="#" class="post-category">Tech</a>
+
 
                 </div>
             </div>
@@ -140,7 +146,9 @@
                         Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
                         Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.html" class="btn read-more">Read More...</a>
+                    <a href="#" class="post-category">Politics</a>
+
 
                 </div>
             </div>
@@ -150,7 +158,6 @@
 
 
         <div class="side-bar">
-            THIS IS A SIDE BAR
         </div>
 
         <!--TODO: add a place to show recent bloggers and button to show all bloggers.-->

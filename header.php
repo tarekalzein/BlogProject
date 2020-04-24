@@ -1,6 +1,6 @@
 
 <div class="logo">
-    <h1 class="logo_text">Some Blog Name</h1>
+    <h1 class="logo_text">Some<span>Blog</span></h1>
 </div>
 <i class="fa fa-bars menu_button"></i>
 <ul class="nav">
