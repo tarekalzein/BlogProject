@@ -1,1 +1,1 @@
-<?php
+<div>Copyright © <?php echo date("Y")?>. All rights reserverd | Tarek Alzein.</div>
