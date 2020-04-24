@@ -1,0 +1,351 @@
+
+body {
+    background: #f3f3f3;
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+.clearfix::after
+{
+    content: '';
+    display: block;
+    clear: both;
+}
+.logo_text span
+{
+    color: rgb(128, 195, 250);
+
+}
+header
+{
+    background: white;
+    height: 85px;
+}
+header *
+{
+    font-family: 'Raleway', sans-serif;
+    color: #202639;
+}
+header .logo
+{
+    float: left;
+    margin-left: 2em ;
+}
+header ul
+{
+    float:right;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: bold;
+}
+
+header ul li
+{
+    float: left;
+    position: relative;
+    margin-top: 30px;
+}
+header ul li a
+{
+    padding :15px;
+    font-size: 1em;
+    text-decoration: none;
+
+}
+
+header ul li a:hover
+{
+    color: rgb(128, 195, 250);
+}
+header .menu_button
+{
+    display: none;
+}
+.showing
+{
+    max-height: 100em;
+}
+/*Carousel Post Slider*/
+.post-slider
+{
+}
+.post-slider .slider-title
+{
+    text-align: center;
+    /*margin: 30px auto;*/
+    margin:0 ;
+    padding-top: 30px;
+    color: #202639;
+    font-size: 1.5em;
+}
+.post-slider .next
+{
+    position: absolute;
+    right: 10%;
+    top: 420px;
+    font-size: 3em;
+}
+.post-slider .prev:hover, .next:hover
+{
+    color: rgb(128, 195, 250);
+}
+.post-slider .prev
+{
+    position: absolute;
+    left: 10%;
+    top: 420px;
+    font-size: 3em;
+}
+.post-slider .post-wrapper
+{
+    width: 70%;
+    height: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0 10px 0;
+}
+.post-slider .post-wrapper .post
+{
+    background: white;
+    display: inline-block;
+    height: 450px;
+    width: 25%;
+    margin: 25px;
+}
+.post-slider .post-wrapper .post .slider-image
+{
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+}
+
+.post-slider .post-wrapper .post .post-info
+{
+    /*margin: auto 10px;*/
+    padding-top: 0;
+    margin: auto 10px;
+}
+.post-slider .post-wrapper .post .post-info h4
+{
+    padding-top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.3em;
+
+}
+.post-slider .post-wrapper .post .post-info .post-title
+{
+    color: #202639;
+    text-decoration: none;
+}
+.post-slider .post-wrapper .post .post-info i
+{
+
+}
+.post-slider .post-wrapper .post .post-category
+{
+    float: right;
+    color: #202639;
+    text-decoration: none;
+}
+.post-slider .post-wrapper .post .post-category:hover
+{
+    color:rgb(128, 195, 250)
+}
+
+.content
+{
+    /*size= viewport height - header height(menu bar) - footer height */
+    min-height: calc(100vh - 85px - 19px);
+}
+.main-content-wrapper
+{
+    width: 75%;
+    margin: 30px auto 30px;
+}
+.main-content-wrapper .main-content
+{
+    width: 70%;
+    float: left;
+}
+.recent-posts-title
+{
+    padding-left: 25px;
+}
+.main-content-wrapper .main-content .post
+{
+    width:95%;
+    height: 225px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 5px;
+    position: relative;
+
+}
+.main-content-wrapper .main-content .post img
+{
+    width: 40%;
+    height: 100%;
+    float:left;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.main-content-wrapper .main-content .post .post-preview
+{
+
+    padding: 10px;
+    /*width: 55%;*/
+    /*float:right;*/
+
+}
+.main-content-wrapper .main-content .post .post-preview h2
+{
+    margin: 10px auto 5px auto;
+}
+.main-content-wrapper .main-content .post .post-preview .post-title
+{
+    text-decoration: none;
+    color: #202639;
+    margin: 0;
+    padding:0 ;
+    /*font-size: 0.8em;*/
+}
+.main-content-wrapper .main-content .post .post-preview .preview-text
+{
+    padding-top: 20px;
+}
+.main-content-wrapper .main-content .post .post-preview .read-more
+{
+    position: absolute;
+    bottom:15px ;
+    right: 15px;
+    text-decoration: none;
+    color: #202639;
+    padding: 6px 10px 6px 10px;
+    border-radius: 5px;
+}
+.main-content-wrapper .main-content .post .post-preview .read-more:hover
+{
+    transition: 0.5s;
+    background-color:rgb(128, 195, 250);
+}
+.main-content-wrapper .main-content .post .post-preview .post-category
+{
+    position: absolute;
+    top:25px ;
+    right: 15px;
+    text-decoration: none;
+    color: #202639;
+    padding: 6px 10px 6px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    background: rgb(128, 195, 250); /*Maybe make this color changeable according to topic?*/
+}
+
+.main-content-wrapper .side-bar
+{
+    width: 30%;
+    float: right;
+    height: 300px;
+}
+
+footer
+{
+    /*margin: 0px;*/
+    /*width:100%;*/
+    /*bottom: 0;*/
+    /*text-align: center;*/
+    /*font-size: 1rem;*/
+    background: #202639;
+    color: #d7f7ff;
+    /*font-family: 'Raleway', sans-serif;*/
+
+    height: 300px;
+    position: relative;
+}
+footer .footer-content
+{
+    height: 280px;
+    display: flex; /*To give equal amount of space for each foot-section*/
+}
+footer .footer-content .footer-section
+{
+    flex: 1;/*To give equal amount of space for each foot-section*/
+    padding: 25px;
+}
+footer .footer-content .footer-section a
+{
+    color: #d7f7ff;
+    text-decoration: none;
+    padding: 20px;
+}
+footer .footer-content .footer-section p
+{
+    text-align: justify;
+}
+footer .footer-content .footer-section input[type=email]
+{
+    width: 70%;
+    height: 25px;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: Raleway, sans-serif;
+    border: none;
+}
+footer .footer-content .footer-section button
+{
+    border: none;
+    background: none;
+    font-size: 20px;
+    color: white;
+}
+footer .footer-content .footer-section button:hover
+{
+    color:rgb(128, 195, 250) ;
+}
+
+footer .footer-content .footer-section .socials
+{
+    font-size: 25px;
+}
+
+footer .footer-bottom
+{
+    padding:5px ;
+    text-align: center;
+    position: absolute;
+    width: 99%;
+    bottom: 0;
+    left: 0;
+    background: #232a3e;
+    color: rgba(215, 247, 255, 0.64);
+}
+
+/*Media Queries*/
+@media only screen and  (max-width: 1200px)
+{
+    header ul
+    {
+        width: 100%;
+        background: white;
+        max-height: 0;
+        overflow: hidden;
+    }
+    header ul li
+    {
+        width: 100%;
+    }
+    header .menu_button
+    {
+        display: block;
+        float: right;
+        font-size: 2em;
+        padding: 25px;
+    }
+}
+
