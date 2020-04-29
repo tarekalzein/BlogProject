@@ -4,7 +4,7 @@
 </div>
 <i class="fa fa-bars menu_button"></i>
 <ul class="nav">
-    <li><a href="#">Home</a></li>
+    <li><a href="index.php">Home</a></li>
     <li><a href="#">Politics</a></li>
     <li><a href="#">Tech</a></li>
     <li><a href="#">Entertainment</a></li>

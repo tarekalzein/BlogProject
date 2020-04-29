@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+    // Code to autoload first tab in the dashboard page:
+
     //The following code is to toggle the menu button on and off when using smaller screens.
     $('.menu_button').on('click',function()
     {
@@ -15,5 +17,7 @@ $(document).ready(function()
         nextArrow: $('.next'),
         prevArrow: $('.prev'),
     });
+
+
 });
 

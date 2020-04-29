@@ -1,3 +1,8 @@
+<?php
+include('db/sql_query.php');
+$posts=getAllPublishedPosts();
+$trendingPosts=getTrendingPosts();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,56 +30,20 @@
         <i class="fas fa-chevron-right next"></i>
 
         <div class="post-wrapper">
+            <?php foreach($trendingPosts as $trendingPost): ?>
             <div class="post">
-                <img src="images/image_1.jpg" alt="" class="slider-image">
+                <img src="<?php echo $trendingPost['image'];?>" alt="" class="slider-image">
                 <div class="post-info">
-                    <h4><a class="post-title" href="single.html">Lorem Ipsum</a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
+                    <h4><a class="post-title" href="single.html"><?php echo $trendingPost['title']?></a></h4>
+                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $trendingPost['author']?></a>
                     &nbsp;
-                    <i class="far fa-calendar">&nbsp;</i><span>2020, April 23</span>
-                    <a href="#" class="post-category">Politics</a>
+                    <i class="far fa-calendar">&nbsp;</i><span><?php echo $trendingPost['date']?></span>
+                    <a href="#" class="post-category <?php echo $trendingPost['category'];?>"><?php echo $trendingPost['category']?></a>
                 </div>
             </div>
-            <div class="post">
-                <img src="images/image_2.jpg" alt="" class="slider-image">
-                <div class="post-info">
-                    <h4><a class="post-title" href="single.html">Ipsum Lorem </a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    &nbsp;
-                    <i class="far fa-calendar">&nbsp;</i><span>2020, April 20</span>
-                    <a href="#" class="post-category">Tech</a>
-                </div>
-            </div>
-            <div class="post">
-                <img src="images/image_1.jpg" alt="" class="slider-image">
-                <div class="post-info">
-                    <h4><a class="post-title" href="single.html">Lorem Ipsum</a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    &nbsp;
-                    <i class="far fa-calendar">&nbsp;</i><span>2020, April 23</span>
-                    <a href="#" class="post-category">Politics</a>
-                </div>
-            </div>
-            <div class="post">
-                <img src="images/image_2.jpg" alt="" class="slider-image">
-                <div class="post-info">
-                    <h4><a class="post-title" href="single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    &nbsp;
-                    <i class="far fa-calendar">&nbsp;</i><span>2020, April 20</span>
-                    <a href="#" class="post-category">Tech</a>
-                </div>
-            </div>
-            <div class="post">
-                <img src="images/image_1.jpg" alt="" class="slider-image">
-                <div class="post-info">
-                    <h4><a class="post-title" href="single.html">Lorem Ipsum</a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    &nbsp;
-                    <i class="far fa-calendar">&nbsp;</i><span>2020, April 23</span>
-                    <a href="#" class="post-category">Politics</a>
-                </div>
-            </div>
+            <?php endforeach;?>
+
+
         </div>
     </div>
 <!--    //Post Slider-->
@@ -84,74 +53,73 @@
         <div class="main-content">
             <h2 class="recent-posts-title">Recent Posts</h2>
             <br>
-            
+            <?php foreach ($posts as $post): ?>
             <div class="post">
-                <img class="post-image" src="images/image_2.jpg" alt="">
+                <img class="post-image" src="<?php echo $post['image'];?>" alt="">
                 <div class="post-preview">
-                    <h2><a href="single.php" class="post-title">Lorem Ipsum Title</a></h2>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    <i class="far calendar">&nbsp;</i><span>2020, April 23</span>
+                    <h2><a href="single.php" class="post-title"><?php echo $post['title'];?></a></h2>
+                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $post['author'];?></a>
+                    <i class="far calendar">&nbsp;</i><span><?php echo $post['date'];?></span>
                     <p class="preview-txt">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
-                        Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
+                        <?php echo (substrwords($post['content'],150)) ;?>
                     </p>
                     <a href="single.html" class="btn read-more">Read More...</a>
-                    <a href="#" class="post-category">Tech</a>
-
+                    <a href="#" class="post-category <?php echo $post['category'];?>"><?php echo $post['category'];?></a>
                 </div>
             </div>
-            <div class="post">
-                <img class="post-image" src="images/image_1.jpg" alt="">
-                <div class="post-preview">
-                    <h2><a href="single.php" class="post-title">Lorem Ipsum Title</a></h2>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    <i class="far calendar">&nbsp;</i><span>2020, April 23</span>
-                    <p class="preview-txt">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
-                        Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
-                    </p>
-                    <a href="single.html" class="btn read-more">Read More...</a>
-                    <a href="#" class="post-category">Politics</a>
-
-
-                </div>
-            </div>
-            <div class="post">
-                <img class="post-image" src="images/image_2.jpg" alt="">
-                <div class="post-preview">
-                    <h2><a href="single.php" class="post-title">Lorem Ipsum Title</a></h2>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    <i class="far calendar">&nbsp;</i><span>2020, April 23</span>
-                    <p class="preview-txt">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
-                        Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
-                    </p>
-                    <a href="single.html" class="btn read-more">Read More...</a>
-                    <a href="#" class="post-category">Tech</a>
-
-
-                </div>
-            </div>
-            <div class="post">
-                <img class="post-image" src="images/image_1.jpg" alt="">
-                <div class="post-preview">
-                    <h2><a href="single.php" class="post-title">Lorem Ipsum Title</a></h2>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>
-                    <i class="far calendar">&nbsp;</i><span>2020, April 23</span>
-                    <p class="preview-txt">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.
-                        Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.
-                    </p>
-                    <a href="single.html" class="btn read-more">Read More...</a>
-                    <a href="#" class="post-category">Politics</a>
-
-
-                </div>
-            </div>
+            <?php endforeach; ?>
+<!---->
+<!--            <div class="post">-->
+<!--                <img class="post-image" src="images/image_1.jpg" alt="">-->
+<!--                <div class="post-preview">-->
+<!--                    <h2><a href="single.php" class="post-title">Lorem Ipsum Title</a></h2>-->
+<!--                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>-->
+<!--                    <i class="far calendar">&nbsp;</i><span>2020, April 23</span>-->
+<!--                    <p class="preview-txt">-->
+<!--                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--                        Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.-->
+<!--                        Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.-->
+<!--                    </p>-->
+<!--                    <a href="single.html" class="btn read-more">Read More...</a>-->
+<!--                    <a href="#" class="post-category">Politics</a>-->
+<!---->
+<!---->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="post">-->
+<!--                <img class="post-image" src="images/image_2.jpg" alt="">-->
+<!--                <div class="post-preview">-->
+<!--                    <h2><a href="single.php" class="post-title">Lorem Ipsum Title</a></h2>-->
+<!--                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>-->
+<!--                    <i class="far calendar">&nbsp;</i><span>2020, April 23</span>-->
+<!--                    <p class="preview-txt">-->
+<!--                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--                        Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.-->
+<!--                        Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.-->
+<!--                    </p>-->
+<!--                    <a href="single.html" class="btn read-more">Read More...</a>-->
+<!--                    <a href="#" class="post-category">Tech</a>-->
+<!---->
+<!---->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="post">-->
+<!--                <img class="post-image" src="images/image_1.jpg" alt="">-->
+<!--                <div class="post-preview">-->
+<!--                    <h2><a href="single.php" class="post-title">Lorem Ipsum Title</a></h2>-->
+<!--                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author">Lorem Ipsum</a>-->
+<!--                    <i class="far calendar">&nbsp;</i><span>2020, April 23</span>-->
+<!--                    <p class="preview-txt">-->
+<!--                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--                        Proin sit amet feugiat nisi, eu molestie arcu. Curabitur vitae auctor tellus, eu molestie sapien.-->
+<!--                        Cras faucibus nec mi luctus lacinia. Nullam ac ante venenatis, hendrerit tortor sit amet, suscipit augue.-->
+<!--                    </p>-->
+<!--                    <a href="single.html" class="btn read-more">Read More...</a>-->
+<!--                    <a href="#" class="post-category">Politics</a>-->
+<!---->
+<!---->
+<!--                </div>-->
+<!--            </div>-->
 
         </div>
 <!--        //Main Content-->
