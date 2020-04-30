@@ -9,6 +9,12 @@ function getAllPublishedPosts()
     $query="SELECT * FROM posts WHERE published=1";
     return db_select($connection,$query);
 }
+function getOnePost($id)
+{
+    global $connection;
+    $query="SELECT * FROM posts WHERE id=$id";
+    return db_select($connection,$query)[0];
+}
 
 function addNewPost($title,$content,$category,$author,$image, $published)
 {

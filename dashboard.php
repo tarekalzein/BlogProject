@@ -31,7 +31,7 @@
                 <button class="logout-button">Logout</button>
             </div>
 
-            <div id="myPosts" class="tabcontent" >
+
                 <h3>My Posts</h3>
                 <hr>
                 <div class="dashboard-posts-wrapper">

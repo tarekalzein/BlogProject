@@ -526,9 +526,102 @@ end of Dashboard.php style
     background: #202639;
     color:rgb(128, 195, 250) ;
 }
-.new-post-form
+/*Style for post.php*/
+.single-post
+{
+    width: 1000px;
+    margin: 0 auto;
+}
+.single-post h1
+{
+    text-align: center;
+    color: #202639;
+}
 
+.single-post h4,h5
+{
+    text-align: center;
+    margin: 1px;
+    padding: 1px;
+    font-style: italic;
+    color: #596476;
 
+}
+
+.single-post img
+{
+    width: 100%;
+    max-height: 400px;
+    padding-top: 15px;
+    margin: 15px auto
+}
+.single-post p
+{
+    width: 90%;
+    margin: 10px auto;
+    line-height:2;
+    text-align: justify;
+}
+
+/*Login.php*/
+.login-content, .register-content
+{
+    width: 500px;
+    padding: 10px 0;
+    margin: 10px auto;
+    text-align: center;
+    border-radius: 10px;
+}
+.login-content
+{
+    height: 250px;
+    background: #8b92aa;
+}
+.register-content
+{
+    height: 450px;
+    background: rgb(128, 195, 250);
+}
+
+.login-content input, .register-content input
+{
+    width: 80%;
+    height: 25px;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: Raleway, sans-serif;
+    border: none;
+    border-radius: 5px;
+}
+.login-content button, .register-content button
+{
+    margin: 15px auto;
+    padding: 10px 25px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.login-content button
+{
+    background:  rgb(128, 195, 250);
+
+}
+.login-content button:hover
+{
+    background: rgb(70, 171, 252);
+
+}
+.register-content button
+{
+    background: #8b92aa;
+}
+.register-content button:hover
+{
+    background: #5d6271;
+}
 
 /*Media Queries*/
 @media only screen and  (max-width: 1200px)
