@@ -1,4 +1,5 @@
 <?php
+//Session will be required when connecting to db this is why I added it to db.php.
 session_start();
 
 include_once ('db_credentials.php');

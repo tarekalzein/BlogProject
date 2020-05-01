@@ -6,21 +6,41 @@ $connection=db_connect();
 function getAllPublishedPosts()
 {
     global $connection;
-    $query="SELECT * FROM posts WHERE published=1";
+    $query="SELECT posts.*, users.username FROM posts JOIN users ON posts.author_id=users.id WHERE published=1";
     return db_select($connection,$query);
 }
-function getOnePost($id)
+function getTrendingPosts()
 {
     global $connection;
-    $query="SELECT * FROM posts WHERE id=$id";
+    $query="SELECT posts.*, users.username
+            FROM posts
+            JOIN users ON posts.author_id=users.id
+            WHERE published=1
+            ORDER BY views DESC
+            LIMIT 5";
+    return db_select($connection,$query);
+}
+function getUserPosts($id)
+{
+    global $connection;
+    $query="SELECT posts.*, users.username
+            FROM posts 
+            JOIN users ON posts.author_id=users.id 
+            WHERE author_id='$id'";
+    return db_select($connection,$query);
+}
+function selectOneRecord($id)
+{
+    global $connection;
+    $query="SELECT posts.*, users.username FROM posts JOIN users ON posts.author_id=users.id WHERE posts.id=$id LIMIT 1";
     return db_select($connection,$query)[0];
 }
 
-function addNewPost($title,$content,$category,$author,$image, $published)
+function addNewPost($title,$content,$category,$author_id,$image, $published)
 {
     global $connection;
-    $query= "INSERT INTO posts (title,content,category,author,image,published)".
-        " VALUES ('$title','$content','$category','$author','$image','$published')";
+    $query= "INSERT INTO posts (title,content,category,author_id,image,published)".
+        " VALUES ('$title','$content','$category','$author_id','$image','$published')";
     $result =db_query($connection,$query);
     if($result===false)
     {
@@ -30,12 +50,7 @@ function addNewPost($title,$content,$category,$author,$image, $published)
         return true;
     }
 }
-function getTrendingPosts()
-{
-    global $connection;
-    $query="SELECT * FROM posts WHERE published=1 LIMIT 5";
-    return db_select($connection,$query);
-}
+
 
 /**
  * Method to Cut A String To A Specified Length With PHP
@@ -69,81 +84,66 @@ function substrwords($text,$maxchar)
     return $output;
 }
 
+function createUser($username,$email,$password)
+{
+    global $connection;
+    $query= "INSERT INTO users (username,email,password)".
+        " VALUES ('$username','$email','$password')";
+    $result =db_query($connection,$query);
+    if($result===false)
+    {
+        return false;
+    }
+    else{
+        return true;
+    }
+
+}
+
+function checkEmailExists($email)
+{
+    global $connection;
+    $query= "SELECT * FROM users WHERE email='$email' LIMIT 2";
+    $result= mysqli_num_rows( db_query($connection,$query));
+    if($result>0)
+    {
+        echo "BIGGER THAN 0";
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+function getUserByEmail($email)
+{
+    global $connection;
+    $query= "SELECT * FROM users WHERE email='$email' LIMIT 1";
+    return db_select($connection,$query)[0];
+}
+function getUserById($id)
+{
+    global $connection;
+    $query= "SELECT * FROM users WHERE id='$id' LIMIT 1";
+    return db_select($connection,$query)[0];
+}
+
+/**
+ * Method to increase column 'views' in 'posts' table with every page visit. PS: page refresh will increase views too.
+ * @param $id int id of the post to increment its views counter.
+ * @return bool|mysqli_result true on success, false on failure.
+ */
+function incrementPostViews($id)
+{
+    global $connection;
+    $query="UPDATE posts set views=views+1 WHERE id='$id'";
+    return db_query($connection,$query);
+}
+
+function getUsersPass($email)
+{
+
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////Access to the connection object.
-//require('connect.php');
-//
-//
-///**
-// *Method that returns a result of all items in a table
-// * @param $table: The desired table name which holds the data.
-// * @var $conn: Global variable of connection from connect.php.
-// * @return array of multiple arrays, each holds data of a row from the database table.
-// * */
-//function selectAll($table, $conditions=[])
-//{
-//    global $conn;
-//    $sql= "SELECT * FROM $table";
-//    //Fetch all data from db
-//
-//    if(empty($conditions))
-//    {
-//
-//        $stmt= $conn->prepare($sql); //prepared statement (to prevent sql injection).
-//        $stmt->execute();
-//        $result=$stmt-> get_result()->fetch_all(MYSQLI_ASSOC);
-//    }else{
-//
-//        }
-//
-//    return $result;
-//}
-//
-//function addPost($title,$content,$author)
-//{
-//    global $conn;
-//    $sql="INSERT INTO posts (title, content, author) VALUES ($title, $content, $author)";
-//
-////    $sql= "INSERT INTO posts SET title='$title', content='$content',author='author'";
-////    $stmt= $conn->prepare($sql); //prepared statement (to prevent sql injection).
-////    $stmt->execute();
-//    if($conn->query($sql)===true)
-//    {
-//        echo "New record created successfully";
-//    } else {
-//        echo "Error: " . $sql . "<br>" . $conn->error;
-//    }
-//
-//    $conn->close();
-//
-//
-//}
-//
-//
-//$users=selectAll('users');
-//echo "<pre>", print_r($users,true) , "</pre>";
-//
-//for ($j =0;$j<count($users);$j++) {
-//    echo print_r($users[$j]['password']."<br>",true);
-//}
 

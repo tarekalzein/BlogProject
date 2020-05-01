@@ -1,8 +1,13 @@
 <?php
 include ('db/sql_query.php');
-$postId=$_GET['id'];
+if(isset($_GET['id']))
+{
+    $postId=$_GET['id'];
 //show only published or all if user is logged in.
-$post=getOnePost($postId);
+    $post=selectOneRecord($postId);
+    incrementPostViews($postId);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +32,11 @@ $post=getOnePost($postId);
 <div class="content">
     <div class="main-content-wrapper clearfix">
         <div class="single-post">
-            <h1><?php echo $post['title']?></h1>
-            <h4>By <?php echo $post['author']?></h4>
+            <h1 class="title"><?php echo $post['title']?></h1>
+            <h4>By <?php echo $post['username']?></h4>
             <h5>Published: <?php echo $post['date']?></h5>
             <img src="<?php echo $post['image']?>" alt="">
-            <p><?php echo $post['content']?></p>
+            <div class="post-content"><?php echo $post['content']?></div>
         </div>
     </div>
 

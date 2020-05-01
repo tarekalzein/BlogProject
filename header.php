@@ -1,6 +1,18 @@
-
+<?php
+include_once('db/sql_query.php');
+if(isset($_SESSION['id']))
+{
+    $id=$_SESSION['id'];
+    $user=getUserById($id);
+    $username=$user['username'];
+    $link='<li><a href="dashboard.php" class="logged-in">'.$username.'</a></li>';
+}
+else{
+    $link="<li><a href=\"login.php\">Log in</a></li>";
+}
+?>
 <div class="logo">
-    <h1 class="logo_text">Some<span>Blog</span></h1>
+    <a href="index.php"><h1 class="logo_text">Some<span>Blog</span></h1></a>
 </div>
 <i class="fa fa-bars menu_button"></i>
 <ul class="nav">
@@ -9,10 +21,11 @@
     <li><a href="#">Tech</a></li>
     <li><a href="#">Entertainment</a></li>
     <li><a href="#">Travel</a></li>
-    <li><a href="#">Log in</a></li>
-    <!--    <li><a href=""><i class="fas fa-search"></i></a></li>-->
-</ul>
+    <?php echo $link ?>
+    <li></li>
 
+<!--    TODO: change the color of username, maybe add photo too!-->
+</ul>
 <!--JQuery CDNJS min-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 

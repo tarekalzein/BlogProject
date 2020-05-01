@@ -3,19 +3,33 @@
 
 include ('db/sql_query.php');
 
+//create users:
+//user1
+createUser
+('admin','admin@admin',password_hash('123456789', PASSWORD_DEFAULT));
 
+
+//user2
+createUser
+('WaffleGirl','ilove@waffles.com',password_hash('asdasdasd', PASSWORD_DEFAULT));
+
+//user3
+createUser
+('Mr_potato_head','potato@head.com',password_hash('123123123', PASSWORD_DEFAULT));
+
+
+//create topics
 $categories=array('politics','tech','entertainment','travel');
 $published=array('1','0');
-$images=array('images/image_1.jpg','images/image_2.jpg');
 $randomIndex=array_rand($categories);
-$content='
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum neque a nibh venenatis dapibus. Suspendisse tempus interdum lectus, vitae finibus velit efficitur et. Suspendisse pharetra dapibus ante, eget faucibus ipsum feugiat nec. Aenean vel justo libero. In egestas urna id aliquet facilisis. Nam id neque tristique, pretium justo a, fermentum mi. Donec tincidunt, ex vitae dignissim gravida, elit dolor venenatis dui, a pulvinar ipsum velit quis libero. Donec mattis dui feugiat metus congue eleifend. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi leo nisi, ultrices non ipsum nec, scelerisque egestas quam. Nam iaculis pulvinar purus, non commodo lectus egestas quis. Etiam pulvinar ex eu sapien semper, lacinia dapibus lorem convallis. Curabitur sagittis turpis vitae velit sagittis, ac cursus nisl imperdiet. Nullam pulvinar dapibus enim, nec lobortis nisl auctor vel. Vestibulum euismod vehicula pulvinar. Vestibulum consequat arcu a augue aliquet iaculis id ac augue.
+$imageUrl='https://loremflickr.com/320/240?random=';
 
-Aliquam scelerisque gravida scelerisque. Curabitur vitae odio laoreet, facilisis nisl sit amet, vehicula urna. Praesent ultricies eros eget felis iaculis efficitur. Donec rutrum aliquet velit, ut finibus urna. Cras massa urna, luctus ut nunc vel, sagittis viverra justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus libero erat, gravida eu augue sit amet, aliquam aliquet libero. In elit turpis, fermentum sit amet tempus ut, ullamcorper ac sem. Suspendisse potenti. Etiam mauris metus, pulvinar sed erat quis, condimentum semper urna. Aliquam quis lobortis odio. Donec tristique, nisl eu facilisis pulvinar, ex magna accumsan enim, non finibus sem sem a ligula.
-';
+$content="
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Atque haec ita iustitiae propria sunt, ut sint virtutum reliquarum communia. Duo Reges: constructio interrete. Quod cum accidisset ut alter alterum necopinato videremus, surrexit statim. Quae iam oratio non a philosopho aliquo, sed a censore opprimenda est. Mihi enim satis est, ipsis non satis. <strong>Aliter homines, aliter philosophos loqui putas oportere?</strong></p><blockquote><p>Quae cum dixissem, Habeo, inquit Torquatus, ad quos ista referam, et, quamquam aliquid ipse poteram, tamen invenire malo paratiores.&nbsp;</p></blockquote><ul><li>Quae si potest singula consolando levare, universa quo modo sustinebit?</li><li>Quo studio Aristophanem putamus aetatem in litteris duxisse?</li><li>Habent enim et bene longam et satis litigiosam disputationem.</li><li>Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere.</li><li>Cur igitur, inquam, res tam dissimiles eodem nomine appellas?</li><li>Item de contrariis, a quibus ad genera formasque generum venerunt.</li></ul><p>Vitiosum est enim in dividendo partem in genere numerare. Nos cum te, M. Cum autem negant ea quicquam ad beatam vitam pertinere, rursus naturam relinquunt. Quod cum dixissent, ille contra. Ex ea difficultate illae fallaciloquae, ut ait Accius, malitiae natae sunt. Qui autem diffidet perpetuitati bonorum suorum, timeat necesse est, ne aliquando amissis illis sit miser. <i>Sed quod proximum fuit non vidit.</i></p><p>Inde sermone vario sex illa a Dipylo stadia confecimus. Quid enim necesse est, tamquam meretricem in matronarum coetum, sic voluptatem in virtutum concilium adducere? Idem adhuc; Bonum valitudo: miser morbus. Sed id ne cogitari quidem potest quale sit, ut non repugnet ipsum sibi. <strong>Sed in rebus apertissimis nimium longi sumus.</strong></p>";
 for($i=0;$i<15;$i++)
 {
-    addNewPost('This is the topic number '.($i+1),$content,$categories[$randomIndex],'Tarek Alzein',$images[array_rand($images)],$published[array_rand($published)]);
+    $image=$imageUrl. $i;
+    addNewPost('This is the topic number '.($i+1),$content,$categories[array_rand($categories)],mt_rand(1,3),$image,$published[array_rand($published)]);
 }
 
 

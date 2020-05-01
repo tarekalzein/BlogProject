@@ -1,5 +1,10 @@
 <?php
 include('db/sql_query.php');
+if(isset($_GET['logout']))
+{
+    session_unset();
+    session_destroy();
+}
 $posts=getAllPublishedPosts();
 $trendingPosts=getTrendingPosts();
 ?>
@@ -35,7 +40,7 @@ $trendingPosts=getTrendingPosts();
                 <img src="<?php echo $trendingPost['image'];?>" alt="" class="slider-image">
                 <div class="post-info">
                     <h4><a class="post-title" href="post.php?id=<?php echo $trendingPost['id'];?>"><?php echo $trendingPost['title']?></a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $trendingPost['author']?></a>
+                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $trendingPost['username']?></a>
                     &nbsp;
                     <i class="far fa-calendar">&nbsp;</i><span><?php echo $trendingPost['date']?></span>
                     <a href="#" class="post-category <?php echo $trendingPost['category'];?>"><?php echo $trendingPost['category']?></a>
@@ -58,10 +63,10 @@ $trendingPosts=getTrendingPosts();
                 <img class="post-image" src="<?php echo $post['image'];?>" alt="">
                 <div class="post-preview">
                     <h2><a href="post.php?id=<?php echo $post['id'];?>" class="post-title"><?php echo $post['title'];?></a></h2>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $post['author'];?></a>
+                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $post['username'];?></a>
                     <i class="far calendar">&nbsp;</i><span><?php echo $post['date'];?></span>
                     <p class="preview-txt">
-                        <?php echo (substrwords($post['content'],150)) ;?>
+                        <?php echo (substrwords(strip_tags($post['content']),200)) ;?> <!--//strip tags is used to clear formatting.-->
                     </p>
                     <a href="post.php?id=<?php echo $post['id'];?>" class="btn read-more">Read More...</a>
                     <a href="#" class="post-category <?php echo $post['category'];?>"><?php echo $post['category'];?></a>

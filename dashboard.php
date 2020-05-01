@@ -1,3 +1,22 @@
+<?php
+include ('db/sql_query.php');
+if(isset($_SESSION['id']))
+{
+    $id = $_SESSION['id'];
+    $user = getUserById($id);
+    $userPosts=getUserPosts($user['id']);
+}
+else
+    {
+        header('location: denied.php');
+}
+
+if(isset($_GET['delete']))
+{
+//TODO: do something here to delete.
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +26,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="javascript/scripts.js"></script>
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--    Font Awesome implementation-->
     <script src="https://kit.fontawesome.com/dedb547a55.js" crossorigin="anonymous"></script>
     <!--    Google Font-->
@@ -28,10 +47,10 @@
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'myPosts')" id="defaultOpen">My Posts</button>
                 <button class="tablinks" onclick="openTab(event, 'myProfile')">My Profile</button>
-                <button class="logout-button">Logout</button>
+                <a href="index.php?logout=true" class="logout-button">Logout</a>
             </div>
 
-
+            <div id="myPosts" class="tabcontent" >
                 <h3>My Posts</h3>
                 <hr>
                 <div class="dashboard-posts-wrapper">
@@ -47,39 +66,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>this is a title</td>
-                            <td>20/20/2020</td>
-                            <td>Tech</td>
-                            <td><i class="fas fa-check"></i></td><!--Add php instead of checked, for example: <?php //if (published == 1) echo 'checked'; ?>-->
-                            <td><a href="#"><i class="far fa-edit edit-btn"></i></a></td>
-                            <td><a href="#"><i class="far fa-trash-alt delete-btn"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>this is a title</td>
-                            <td>20/20/2020</td>
-                            <td>Tech</td>
-                            <td><i class="fas fa-check checked"></i></td> <!--Add php instead of checked, for example: <?php //if (published == 1) echo 'checked'; ?>-->
-                            <td><a href="#"><i class="far fa-edit edit-btn"></i></a></td>
-                            <td><a href="#"><i class="far fa-trash-alt delete-btn"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>this is a title</td>
-                            <td>20/20/2020</td>
-                            <td>Tech</td>
-                            <td><i class="fas fa-check"></i></td><!--Add php instead of checked, for example: <?php //if (published == 1) echo 'checked'; ?>-->
-                            <td><a href="#"><i class="far fa-edit edit-btn"></i></a></td>
-                            <td><a href="#"><i class="far fa-trash-alt delete-btn"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>this is a title</td>
-                            <td>20/20/2020</td>
-                            <td>Tech</td>
-                            <td><i class="fas fa-check"></i></td><!--Add php instead of checked, for example: <?php //if (published == 1) echo 'checked'; ?>-->
-                            <td><a href="#"><i class="far fa-edit edit-btn"></i></a></td>
-                            <td><a href="#"><i class="far fa-trash-alt delete-btn"></i></a></td>
-                        </tr>
+                        <?php foreach ($userPosts as $post): ?>
 
+                        <tr>
+                            <td><a href="post.php?id=<?php echo $post['id'];?>"><?php echo $post['title'];?></a></td>
+                            <td><?php echo $post['date'];?></td>
+                            <td><?php echo $post['category'];?></td>
+                            <td><i class="fas fa-check <?php if($post['published']) echo 'checked'?>"></i></td>
+                            <td><a href="#"><i class="far fa-edit edit-btn"></i></a></td>
+<!--                            TODO: FUNCTION: EDIT-->
+<!--                            TODO: FUNCTION: DELETE-->
+                            <td><a href="dashboard.php?delete=<?php echo $post['id']?>"><i class="far fa-trash-alt delete-btn"></i></a></td>
+                        </tr>
+                        <?php endforeach;?>
 
                         </tbody>
                     </table>
@@ -101,7 +100,7 @@
 
 
 </div>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="javascript/tabs.js"></script>
 </body>
 <footer>

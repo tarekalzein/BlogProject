@@ -21,6 +21,7 @@ header
     background: white;
     height: 85px;
 }
+
 header *
 {
     font-family: 'Raleway', sans-serif;
@@ -28,9 +29,15 @@ header *
 }
 header .logo
 {
+
     float: left;
     margin-left: 2em ;
 }
+header .logo a
+{
+    text-decoration: none;
+}
+
 header ul
 {
     float:right;
@@ -53,7 +60,6 @@ header ul li a
     text-decoration: none;
 
 }
-
 header ul li a:hover
 {
     color: rgb(128, 195, 250);
@@ -61,6 +67,13 @@ header ul li a:hover
 header .menu_button
 {
     display: none;
+}
+header .logged-in
+{
+    color: rgb(128, 195, 250);
+    background: #202639;
+    border-radius: 5px;
+    padding: 10px;
 }
 .showing
 {
@@ -359,7 +372,7 @@ footer .footer-bottom
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab button,.logout-button {
     background-color: inherit;
     float: left;
     border: none;
@@ -368,6 +381,7 @@ footer .footer-bottom
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    text-decoration: none;
 }
  .dashboard-posts-wrapper table
  {
@@ -392,6 +406,15 @@ footer .footer-bottom
     margin: 15px 0;
     /*border-bottom: solid;*/
     /*border-width: 1px 0;*/
+}
+.dashboard-posts-wrapper table a
+{
+    text-decoration: none;
+    color: #202639;
+}
+.dashboard-posts-wrapper tr:hover
+{
+    background: #dde6ff;
 }
 .dashboard-posts-wrapper tr:nth-child(even)
 {
@@ -451,9 +474,14 @@ table, th, td {
 }
 .tab .logout-button
 {
+    background: #fd4747;
     float: right;
-    background: #e33030;
     color: #202639;
+}
+.tab .logout-button:hover
+{
+    background: #e33030;
+
 }
 
 
@@ -467,16 +495,20 @@ end of Dashboard.php style
 .new-post-form
 {
     width: 850px;
-    margin:25px auto;
+    margin:30px auto;
 }
 .new-post-form h2
 {
     margin:0;
 }
-.new-post-form textarea,select,input
+.new-post-form select,input
 {
     margin-top: 5px;
     margin-bottom: 25px;
+}
+/*height of rendered CKEditor content section*/
+.ck-editor__editable_inline {
+    height: 320px;
 }
 
 .new-post-form input[type='text']
@@ -490,17 +522,7 @@ end of Dashboard.php style
     font-family: Raleway, sans-serif;
     border: none;
 }
-.new-post-form textarea
-{
-    width: 100%;
-    padding: 0 5px;
-    height: 350px;
-    margin: 10px 5px;
-    box-sizing: border-box;
-    font-size: 1em;
-    font-family: Raleway, sans-serif;
-    border: none;
-}
+
 .new-post-form select
 {
     width: 100%;
@@ -526,13 +548,14 @@ end of Dashboard.php style
     background: #202639;
     color:rgb(128, 195, 250) ;
 }
+
 /*Style for post.php*/
 .single-post
 {
     width: 1000px;
     margin: 0 auto;
 }
-.single-post h1
+.single-post .title
 {
     text-align: center;
     color: #202639;
@@ -555,7 +578,7 @@ end of Dashboard.php style
     padding-top: 15px;
     margin: 15px auto
 }
-.single-post p
+.single-post post-content
 {
     width: 90%;
     margin: 10px auto;
@@ -563,7 +586,7 @@ end of Dashboard.php style
     text-align: justify;
 }
 
-/*Login.php*/
+/*Login.php and register.php*/
 .login-content, .register-content
 {
     width: 500px;
@@ -574,15 +597,29 @@ end of Dashboard.php style
 }
 .login-content
 {
-    height: 250px;
+    min-height: 250px;
     background: #8b92aa;
 }
 .register-content
 {
-    height: 450px;
+    min-height: 400px;
     background: rgb(128, 195, 250);
 }
+.form-error-msg
+{
+    width: 80%;
+    margin: 5px auto ;
+    border-radius: 5px;
+    text-align: left;
+    background: #ffa5af;
+}
+.form-error-msg li
+{
+    margin: 3px;
+    padding: 3px;
 
+
+}
 .login-content input, .register-content input
 {
     width: 80%;
@@ -623,6 +660,32 @@ end of Dashboard.php style
     background: #5d6271;
 }
 
+
+/*denied.php Style start:*/
+.error-wrapper
+{
+    width: 90%;
+    height: 300px;
+    margin: auto auto;
+    padding-top: 25px;
+    text-align: center;
+}
+.error-wrapper h1
+{
+    font-size: 10em;
+    color:  #FF0000;
+    padding: 0;
+    margin: 0;
+}
+.error-wrapper .fa-ban
+{
+    font-size: 10em;
+    color:  #FF0000;
+    padding: 0;
+    margin: 0;
+}
+
+/*End of denied.php style*/
 /*Media Queries*/
 @media only screen and  (max-width: 1200px)
 {
@@ -643,6 +706,10 @@ end of Dashboard.php style
         float: right;
         font-size: 2em;
         padding: 25px;
+    }
+    header .nav
+    {
+        /*padding-bottom: 25px;*/
     }
 }
 

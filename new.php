@@ -1,6 +1,8 @@
 <?php
 include ('db/sql_query.php');
 $target_dir= "uploads/";
+$userId=$_SESSION['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +11,6 @@ $target_dir= "uploads/";
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="javascript/scripts.js"></script>
 
     <!-- Sweet Alert Custom Alert  https://sweetalert.js.org/guides/ -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -18,7 +19,7 @@ $target_dir= "uploads/";
     <script src="https://kit.fontawesome.com/dedb547a55.js" crossorigin="anonymous"></script>
     <!--    Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>SomeBlog Home Page</title>
+    <title>New Post</title>
 
 </head>
 <body>
@@ -34,7 +35,7 @@ $target_dir= "uploads/";
             <input type="text" name="title" placeholder="post title...">
 
             <h2>Content</h2>
-            <textarea name="content"  cols="60" rows="10" placeholder="post content..."></textarea>
+            <textarea name="content" id="content" cols="60" rows="10" placeholder="post content..."></textarea>
             <br>
             <h2>Category</h2>
             <select name="category" id="category">
@@ -49,8 +50,6 @@ $target_dir= "uploads/";
             <h2>Post Image</h2>
             <input type="file" name="fileToUpload" accept="image/*">
             <br>
-
-
             <button type="submit" name="submit">Post</button>
 <!--            -->
             <?php
@@ -60,7 +59,7 @@ $target_dir= "uploads/";
                  $category=$_POST['category'];
                  $published= isset($_POST['published']) ? 1 : 0;
 
-                 $author='TAREK ALZEIN';
+                $author_id=$userId;
 
                  //Image checks:
                 $uploadOk = 1;
@@ -107,7 +106,7 @@ $target_dir= "uploads/";
                 }
                 if($uploadOk==1)
                 {
-                    if(addNewPost($title,$content,$category,$author,$image,$published))
+                    if(addNewPost($title,$content,$category,$author_id,$image,$published))
                     {
 //                   If input is saved then pop a SweetAlert alert then redirect to dashboard.php (PRG 'POST/RETURN/GET' pattern)
                         echo "<script type='text/javascript'>";
@@ -119,13 +118,17 @@ $target_dir= "uploads/";
                 }
 
                 //TODO: change Image file name so it adds the username too or something?
+                //TODO: Form verification.
 
             }
             ?>
         </form>
     </div>
-
 </div>
+<!--script of CKEditor for rich text in textarea.-->
+<script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
+<script type="text/javascript" src="javascript/scripts.js"></script>
+
 </body>
 <footer>
     <?php include ('footer.php');?>

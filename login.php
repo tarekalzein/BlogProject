@@ -1,5 +1,6 @@
 <?php
-include ('db/sql_query.php');
+include('controllers/users.php');
+global $errors;
 
 ?>
 <!DOCTYPE html>
@@ -28,37 +29,33 @@ include ('db/sql_query.php');
 <div class="content">
     <div class="main-content-wrapper clearfix">
         <div class="login-content">
-            <form action="">
                 <h1>Login</h1>
-                <form action="" method="post">
-                    <input type="email" name="email" placeholder="Email">
+            <div class="form-error-msg">
+                <?php
+                if(isset($errors))
+                {
+                    if(count($errors)>0)
+                    {
+                        foreach ($errors as $error)
+                        {
+                            echo  "<li>$error </li>";
+                        }
+                    }
+                }
+                ?>
+            </div>
+                <form action="login.php" method="post">
+                    <input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){echo $_POST['email'];}?>">
                     <br>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" value="<?php if(isset($_POST['password'])){echo $_POST['email'];}?>">
                     <br>
 
                     <button type="submit" name="login">Log in</button>
                     <br>
-                </form>
-            </form>
+                 </form>
+            <h4>Don't have an account? <a href="register.php">sign up!</a></h4>
         </div>
-        <div class="register-content">
-            <h4>Don't have an account? sign up!</h4>
-            <h1>Sign up</h1>
-            <form action="" method="post">
-                <input type="text" name="firstname" placeholder="First name">
-                <br>
-                <input type="text" name="lastname" placeholder="Last name">
-                <br>
-                <input type="email" name="email" placeholder="Email">
-                <br>
-                <input type="password" name="password" placeholder="Password">
-                <br>
-                <input type="password" name="repeated-password" placeholder="Repeat password">
-                <br>
-                <button type="submit" name="register">Sign up</button>
-                <br>
-            </form>
-        </div>
+
     </div>
 
 
