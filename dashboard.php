@@ -11,11 +11,7 @@ else
         header('location: denied.php');
 }
 
-if(isset($_GET['delete']))
-{
-//TODO: do something here to delete.
 
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,8 +57,8 @@ if(isset($_GET['delete']))
                             <th>Date</th>
                             <th>Category</th>
                             <th>Published</th>
-                            <th></th> <!--Space for edit button-->
-                            <th></th> <!--Space for delete button-->
+                            <th> </th> <!--Space for edit button-->
+                            <th> </th> <!--Space for delete button-->
                         </tr>
                         </thead>
                         <tbody>
@@ -73,10 +69,23 @@ if(isset($_GET['delete']))
                             <td><?php echo $post['date'];?></td>
                             <td><?php echo $post['category'];?></td>
                             <td><i class="fas fa-check <?php if($post['published']) echo 'checked'?>"></i></td>
-                            <td><a href="#"><i class="far fa-edit edit-btn"></i></a></td>
+                            <td><a href="edit.php?id=<?php echo $post['id']?>"><i class="far fa-edit edit-btn"></i></a></td>
 <!--                            TODO: FUNCTION: EDIT-->
 <!--                            TODO: FUNCTION: DELETE-->
                             <td><a href="dashboard.php?delete=<?php echo $post['id']?>"><i class="far fa-trash-alt delete-btn"></i></a></td>
+                            <?php
+                            if(isset($_GET['delete']))
+                            {
+                                echo "<script type='text/javascript'>
+                                        swal(\"Are you sure you want to do this?\", {
+                                        buttons: ['Delete', 'Cancel'],}).then(willDelete => {
+                                        if (!willDelete) {
+                                        window.location='edit.php?delete=".$_GET['delete']."';
+                                        }
+                                        });</script>";
+                            }
+                            ?>
+
                         </tr>
                         <?php endforeach;?>
 

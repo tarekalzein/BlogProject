@@ -140,9 +140,11 @@ function incrementPostViews($id)
     return db_query($connection,$query);
 }
 
-function getUsersPass($email)
+function deletPost($id)
 {
-
+    global $connection;
+    $query= "DELETE FROM posts WHERE id='$id'";
+    return db_query($connection,$query);
 }
 
 

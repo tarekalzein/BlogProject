@@ -11,7 +11,7 @@ if(isset($_GET['tempid']))
     $_SESSION['id']=$_GET['tempid'];
 }
 else{
-    $_SESSION['id']=13;
+    $_SESSION['id']=2;
 
 }
 header("location:index.php");

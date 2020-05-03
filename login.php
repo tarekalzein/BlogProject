@@ -1,5 +1,5 @@
 <?php
-include('controllers/users.php');
+include('controllers/verify.php');
 global $errors;
 
 ?>
