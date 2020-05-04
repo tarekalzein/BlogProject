@@ -50,6 +50,19 @@ function addNewPost($title,$content,$category,$author_id,$image, $published)
         return true;
     }
 }
+function updatePost($postId,$title,$content,$category,$image, $published)
+{
+    global $connection;
+    $query="UPDATE posts set title='$title', content='$content',category='$category', image='$image', published='$published' WHERE id='$postId'";
+    $result =db_query($connection,$query);
+    if($result===false)
+    {
+        return false;
+    }
+    else{
+        return true;
+    }
+}
 
 
 /**
@@ -144,6 +157,13 @@ function deletPost($id)
 {
     global $connection;
     $query= "DELETE FROM posts WHERE id='$id'";
+    return db_query($connection,$query);
+}
+
+function replacePostImage($id, $newImage)
+{
+    global $connection;
+    $query="UPDATE posts set image='$newImage' WHERE id='$id'";
     return db_query($connection,$query);
 }
 

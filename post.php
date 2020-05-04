@@ -3,10 +3,22 @@ include ('db/sql_query.php');
 if(isset($_GET['id']))
 {
     $postId=$_GET['id'];
-//show only published or all if user is logged in.
+    //Don't show posts that are not published for other than the publisher.
     $post=selectOneRecord($postId);
-    incrementPostViews($postId);
+    if(!$post['published'] &&  $post['author_id']!=$_SESSION['id'])
+    {
+        header('location: denied.php');
+    }
+    //Increment only if other users than the publisher are visiting the paqe.
+    else if($post['author_id']!=$_SESSION['id']){
+        incrementPostViews($postId);
+    }
 }
+else
+    {
+        //Opening post.php without a post id (post.php?id=x) will redirect the user to homepage.
+        header('location: index.php');
+    }
 
 ?>
 <!DOCTYPE html>

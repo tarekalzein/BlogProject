@@ -71,7 +71,6 @@ else
                             <td><i class="fas fa-check <?php if($post['published']) echo 'checked'?>"></i></td>
                             <td><a href="edit.php?id=<?php echo $post['id']?>"><i class="far fa-edit edit-btn"></i></a></td>
 <!--                            TODO: FUNCTION: EDIT-->
-<!--                            TODO: FUNCTION: DELETE-->
                             <td><a href="dashboard.php?delete=<?php echo $post['id']?>"><i class="far fa-trash-alt delete-btn"></i></a></td>
                             <?php
                             if(isset($_GET['delete']))

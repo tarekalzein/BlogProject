@@ -494,8 +494,18 @@ end of Dashboard.php style
 /*new.php style*/
 .new-post-form
 {
+    position: relative;
     width: 850px;
     margin:30px auto;
+}
+.new-post-form a
+{
+    text-decoration: none;
+    color: #202639;
+}
+.new-post-form i
+{
+    color: red;
 }
 .new-post-form h2
 {
@@ -536,7 +546,10 @@ end of Dashboard.php style
 }
 .new-post-form button
 {
-    float: right;
+    /*float: right;*/
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
     padding: 10px 25px;
     background:  rgb(128, 195, 250);
     font-size: 20px;

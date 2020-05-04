@@ -85,7 +85,7 @@ if(isset($_POST['register']))
 
 function verifyForm()
 {
-
+    //Form input checks:
     $target_dir= "uploads/";
     $userId=$_SESSION['id'];
 
@@ -108,7 +108,7 @@ function verifyForm()
 
 
     $author_id=$userId;
-//TODO: move check function to verify.
+
     //Image checks:
     $uploadOk = 1;
     if(!empty($_FILES["fileToUpload"]["name"]))
@@ -136,13 +136,13 @@ function verifyForm()
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
         {
             $uploadOk=0;
-
             return "<script type='text/javascript'>swal({title: 'File format error',text:'only JPG, JPEG, PNG files are allowed ', icon:'error'});</script>";
         }
-
         if($uploadOk==1)
         {
-            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
+            //TODO: find a better naming for images.
+//            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
+            $target_file=$target_dir."user".$author_id."-". $_POST['title'].'.'.$imageFileType;
             if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $image= $target_file;
@@ -151,7 +151,6 @@ function verifyForm()
                 return "<script type='text/javascript'>swal({title: 'Error in uploading file to server', icon:'error'});</script>";
             }
         }
-
     }else{
         $image='images/placeholder.jpg';
     }
@@ -166,11 +165,106 @@ function verifyForm()
         }else{
             echo "<script type='text/javascript'>swal({title: 'Error saving your post', icon:'error'});</script>";
         }
+    }
+}
 
-        echo "Verified";
+function editPost($postId,$postImage)
+{
+    //Form input checks:
+    $target_dir= "uploads/";
+    $userId=$_SESSION['id'];
+
+    $formOk=1;
+    if(empty($_POST['title']))
+    {
+        $formOk=0;
+        return "<script type='text/javascript'>swal({title: 'Title is required', icon:'error'});</script>";
+    }
+    if(strlen($_POST['title'])>60)
+    {
+        $formOk=0;
+        return "<script type='text/javascript'>swal({title: 'Title is too big',text:'Maximum number of characters: 60', icon:'error'});</script>";
+    }
+    if(empty($_POST['content']))
+    {
+        $formOk=0;
+        return "<script type='text/javascript'>swal({title: 'Content is required',text:'Posts without content are not allowed', icon:'error'});</script>";
     }
 
+
+    $author_id=$userId;
+
+    //Image checks:
+    $uploadOk = 1;
+    if(!empty($_FILES["fileToUpload"]["name"]))
+    {
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        //Check if file exists.
+        if(file_exists($target_file))
+        {
+            $uploadOk=0;
+            return "<script type='text/javascript'>swal({title: 'File Already exists', icon:'error'});</script>";
+
+        }
+
+        //Check File Size <2 mb
+        if($_FILES["fileToUpload"]["size"]> 2000000 )
+        {
+            $uploadOk=0;
+
+            return "<script type='text/javascript'>swal({title: 'File is too large',text:'Maximum file size: 2 MB ', icon:'error'});</script>";
+        }
+
+        //Check file format
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
+        {
+            $uploadOk=0;
+            return "<script type='text/javascript'>swal({title: 'File format error',text:'only JPG, JPEG, PNG files are allowed ', icon:'error'});</script>";
+        }
+        if($uploadOk==1)
+        {
+            unlink($postImage);
+            //TODO: find a better naming for images.
+//            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
+            $target_file=$target_dir."user".$author_id."-". $_POST['title'].'.'.$imageFileType;
+            if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
+            {
+                $image= $target_file;
+            }
+            else{
+                return "<script type='text/javascript'>swal({title: 'Error in uploading file to server', icon:'error'});</script>";
+            }
+        }
+    }else{
+        $image=$postImage;
+    }
+    if($uploadOk== 1&& $formOk==1)
+
+        if(updatePost($postId,$_POST['title'],$_POST['content'],$_POST['category'],$image,$_POST['published']))
+        {
+//                  If input is saved then pop a SweetAlert alert then redirect to dashboard.php (PRG 'POST/RETURN/GET' pattern)
+            echo "<script type='text/javascript'>";
+            echo "swal({title: 'Saved', icon:'success'}).then(function(){window.location.href='dashboard.php';});";
+            echo "</script>";
+        }else{
+            echo "<script type='text/javascript'>swal({title: 'Error saving your post', icon:'error'});</script>";
+        }
 }
 
 
+function deleteImage($postId)
+{
+    $post=selectOneRecord($postId);
+    unlink($post['image']);
+    if(replacePostImage($postId,'images/placeholder.jpg'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
