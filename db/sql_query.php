@@ -6,7 +6,7 @@ $connection=db_connect();
 function getAllPublishedPosts()
 {
     global $connection;
-    $query="SELECT posts.*, users.username FROM posts JOIN users ON posts.author_id=users.id WHERE published=1";
+    $query="SELECT posts.*, users.username FROM posts JOIN users ON posts.author_id=users.id WHERE published=1 order by date DESC";
     return db_select($connection,$query);
 }
 function getTrendingPosts()
