@@ -79,7 +79,6 @@ $users=getTopUsers();
 
 
         <div class="side-bar">
-            <!--TODO: add a place to show recent bloggers and button to show all bloggers.-->
             <div class="top-users-box">
                 <h3>Top Bloggers:</h3>
                 <ul>

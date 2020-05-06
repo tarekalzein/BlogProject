@@ -140,7 +140,6 @@ function verifyForm()
         }
         if($uploadOk==1)
         {
-            //TODO: find a better naming for images.
 //            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
             $target_file=$target_dir."user".$author_id."-". $_POST['title'].'.'.$imageFileType;
             if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
@@ -226,7 +225,6 @@ function editPost($postId,$postImage)
         if($uploadOk==1)
         {
             unlink($postImage);
-            //TODO: find a better naming for images.
 //            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
             $target_file=$target_dir."user".$author_id."-". $_POST['title'].'.'.$imageFileType;
             if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
