@@ -1,4 +1,3 @@
-
 body {
     background: #f3f3f3;
     padding: 0;
@@ -14,14 +13,12 @@ body {
 .logo_text span
 {
     color: rgb(128, 195, 250);
-
 }
 header
 {
     background: white;
     height: 85px;
 }
-
 header *
 {
     font-family: 'Raleway', sans-serif;
@@ -29,7 +26,6 @@ header *
 }
 header .logo
 {
-
     float: left;
     margin-left: 2em ;
 }
@@ -46,7 +42,6 @@ header ul
     list-style: none;
     font-weight: bold;
 }
-
 header ul li
 {
     float: left;
@@ -58,7 +53,6 @@ header ul li a
     padding :15px;
     font-size: 1em;
     text-decoration: none;
-
 }
 header ul li a:hover
 {
@@ -80,6 +74,7 @@ header .logged-in
     max-height: 100em;
 }
 /*Carousel Post Slider*/
+
 .post-slider
 {
 }
@@ -87,7 +82,6 @@ header .logged-in
 {
     text-align: center;
     /*margin: 30px auto;*/
-    margin:0 ;
     padding-top: 30px;
     color: #202639;
     font-size: 1.5em;
@@ -96,7 +90,7 @@ header .logged-in
 {
     position: absolute;
     right: 10%;
-    top: 420px;
+    top: 325px;
     font-size: 3em;
 }
 .post-slider .prev:hover, .next:hover
@@ -107,7 +101,7 @@ header .logged-in
 {
     position: absolute;
     left: 10%;
-    top: 420px;
+    top: 325px;
     font-size: 3em;
 }
 .post-slider .post-wrapper
@@ -122,7 +116,7 @@ header .logged-in
 {
     background: white;
     display: inline-block;
-    height: 450px;
+    height: 350px;
     width: 25%;
     margin: 25px;
 }
@@ -136,16 +130,15 @@ header .logged-in
 .post-slider .post-wrapper .post .post-info
 {
     /*margin: auto 10px;*/
-    padding-top: 0;
     margin: auto 10px;
 }
 .post-slider .post-wrapper .post .post-info h4
 {
-    padding-top: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.3em;
+    margin: 0;
 
 }
 .post-slider .post-wrapper .post .post-info .post-title
@@ -164,6 +157,7 @@ header .logged-in
     text-decoration: none;
     border-radius: 5px;
     padding: 3px 5px;
+    font-size: 0.8em;
 
 }
 .post-slider .post-wrapper .post .post-category:hover
@@ -752,6 +746,64 @@ end of Dashboard.php style
     header .nav
     {
         /*padding-bottom: 25px;*/
+    }
+
+    .main-content-wrapper .main-content
+    {
+        width: 100%;
+
+    }
+    .slick-dots {
+        display: flex;
+        justify-content: center;
+
+        margin: 0;
+        padding: 1rem 0;
+
+        list-style-type: none;
+    }
+    .slick-dots li {
+        margin: 0 0.25rem;
+    }
+
+    .slick-dots  button {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
+
+        border: none;
+        border-radius: 100%;
+        background-color: #262626;
+
+        text-indent: -9999px;
+    }
+    .slick-dots li.slick-active button {
+        background:  rgb(128, 195, 250);
+    }
+    .post-slider .post-wrapper
+    {
+        width: 100%;
+    }
+    .post-slider .next, .prev
+    {
+        visibility: hidden;
+    }
+    .single-post
+    {
+        width: 100%;
+    }
+
+    .main-content-wrapper .side-bar {
+        width: 100%;
+    }
+    footer
+    {
+        height: fit-content;
+    }
+    footer .footer-content
+    {
+        display: inline-block;
     }
 }
 

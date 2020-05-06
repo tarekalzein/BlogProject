@@ -16,6 +16,14 @@ $(document).ready(function()
         autoplaySpeed: 2500,
         nextArrow: $('.next'),
         prevArrow: $('.prev'),
+        responsive: [{
+            breakpoint:1600, //tablet
+            settings:{
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots:true,
+            }
+        }]
     });
 
 

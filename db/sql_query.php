@@ -185,7 +185,6 @@ function checkEmailExists($email)
     $result= mysqli_num_rows( db_query($connection,$query));
     if($result>0)
     {
-        echo "BIGGER THAN 0";
         return true;
     }
     else

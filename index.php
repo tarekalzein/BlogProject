@@ -13,7 +13,7 @@ $users=getTopUsers();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--    <meta name="viewport" content="width=device-width,initial-scale=1.0">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
 
@@ -21,7 +21,7 @@ $users=getTopUsers();
     <script src="https://kit.fontawesome.com/dedb547a55.js" crossorigin="anonymous"></script>
 <!--    Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>SomeBlog Home Page</title>
+    <title>SomeBlog Homepage</title>
 
 </head>
 <body>
@@ -41,9 +41,13 @@ $users=getTopUsers();
                 <img src="<?php echo $trendingPost['image'];?>" alt="" class="slider-image">
                 <div class="post-info">
                     <h4><a class="post-title" href="post.php?id=<?php echo $trendingPost['id'];?>"><?php echo $trendingPost['title']?></a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="topics.php?user=<?php echo $trendingPost['author_id']?>" class="post-author"><?php echo $trendingPost['username']?></a>
-                    &nbsp;
-                    <i class="far fa-calendar">&nbsp;</i><span><?php echo $trendingPost['date']?></span>
+                    <br>
+                    By:
+<!--                    <i class="far fa-user">   &nbsp; </i><a href="topics.php?user=--><?php //echo $trendingPost['author_id']?><!--" class="post-author">--><?php //echo $trendingPost['username']?><!--</a>-->
+                    <a href="topics.php?user=<?php echo $trendingPost['author_id']?>" class="post-author"><?php echo $trendingPost['username']?></a>
+
+                    <!--                    &nbsp;<br>&nbsp;<br>-->
+<!--                    <i class="far fa-calendar">&nbsp;</i><span>--><?php //echo $trendingPost['date']?><!--</span>-->
                     <a href="topics.php?category=<?php echo $trendingPost['category']; ?>" class="post-category <?php echo $trendingPost['category'];?>"><?php echo $trendingPost['category']?></a>
                 </div>
             </div>
@@ -83,7 +87,12 @@ $users=getTopUsers();
                 <h3>Top Bloggers:</h3>
                 <ul>
                     <?php foreach ($users as $user): ?>
-                        <li><a href="topics.php?user=<?php echo $user['author_id'];?>"><?php echo $user['username'];?> </a>&nbsp (<?php echo $user['totalPosts']?> posts)</li>
+                        <li>
+                            <a href="topics.php?user=<?php echo $user['author_id'];?>"><?php echo $user['username'];?> </a>
+                            &nbsp (<?php echo $user['totalPosts'];
+                                    if($user['totalPosts']==1){ echo ' post';}
+                                    else echo ' posts';?> )
+                        </li>
                     <?php endforeach;?>
 
                 </ul>
