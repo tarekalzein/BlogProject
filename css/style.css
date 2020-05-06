@@ -278,13 +278,42 @@ header .logged-in
 {
     background: rgb(174, 125, 255); /*Maybe make this color changeable according to topic?*/
 }
+.main-content-wrapper .show-all-btn
+{
+    text-align: center;
+    padding: 25px;
+}
+.main-content-wrapper .show-all-btn a
+{
+
+    background: dodgerblue;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+}
+.main-content-wrapper .show-all-btn a:hover
+{
+
+}
 
 .main-content-wrapper .side-bar
 {
-    width: 30%;
+    margin-top: 5%;
+    padding: 10px;
+    width: 25%;
     float: right;
-    height: 300px;
+    height: fit-content;
+    /*background: #c3cade;*/
+    /*border-radius: 10px;*/
+    /*border-bottom: 1px solid black;*/
 }
+.main-content-wrapper .side-bar .show-all-users-btn
+{
+    float: right;
+    text-decoration: none;
+}
+
 
 footer
 {

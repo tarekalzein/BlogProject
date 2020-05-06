@@ -6,7 +6,45 @@ $connection=db_connect();
 function getAllPublishedPosts()
 {
     global $connection;
-    $query="SELECT posts.*, users.username FROM posts JOIN users ON posts.author_id=users.id WHERE published=1 order by date DESC";
+    $query="SELECT posts.*, users.username
+            FROM posts
+            JOIN users ON posts.author_id=users.id 
+            WHERE published=1 
+            order by date DESC";
+    return db_select($connection,$query);
+}
+function getPublishedByCategory($category)
+{
+    global $connection;
+    $query="SELECT posts.*, users.username
+            FROM posts
+            JOIN users ON posts.author_id=users.id 
+            WHERE published=1
+            AND category='$category'
+            order by date DESC";
+    return db_select($connection,$query);
+}
+
+function getPublishedByUser($userId)
+{
+    global $connection;
+    $query="SELECT posts.*, users.username
+            FROM posts
+            JOIN users ON posts.author_id=users.id 
+            WHERE published=1
+            AND author_id='$userId'
+            order by date DESC";
+    return db_select($connection,$query);
+}
+
+function getRecentPublishedPosts()
+{
+    global $connection;
+    $query="SELECT posts.*, users.username 
+            FROM posts 
+            JOIN users ON posts.author_id=users.id 
+            WHERE published=1 
+            order by date DESC limit 5";
     return db_select($connection,$query);
 }
 function getTrendingPosts()
@@ -18,6 +56,24 @@ function getTrendingPosts()
             WHERE published=1
             ORDER BY views DESC
             LIMIT 5";
+    return db_select($connection,$query);
+}
+function getTopUsers()
+{
+    global $connection;
+    $query="SELECT COUNT(posts.author_id) AS totalPosts,posts.author_id,users.username 
+            FROM posts 
+            JOIN users ON posts.author_id=users.id 
+            GROUP BY posts.author_id
+            ORDER BY totalPosts DESC
+            LIMIT 10";
+    return db_select($connection,$query);
+}
+function getAllUsers()
+{
+    global $connection;
+    $query="SELECT users.username, users.id
+            FROM users";
     return db_select($connection,$query);
 }
 function getUserPosts($id)
@@ -32,7 +88,11 @@ function getUserPosts($id)
 function selectOneRecord($id)
 {
     global $connection;
-    $query="SELECT posts.*, users.username FROM posts JOIN users ON posts.author_id=users.id WHERE posts.id=$id LIMIT 1";
+    $query="SELECT posts.*, users.username 
+            FROM posts 
+            JOIN users ON posts.author_id=users.id 
+            WHERE posts.id=$id 
+            LIMIT 1";
     return db_select($connection,$query)[0];
 }
 
@@ -40,7 +100,7 @@ function addNewPost($title,$content,$category,$author_id,$image, $published)
 {
     global $connection;
     $query= "INSERT INTO posts (title,content,category,author_id,image,published)".
-        " VALUES ('$title','$content','$category','$author_id','$image','$published')";
+            " VALUES ('$title','$content','$category','$author_id','$image','$published')";
     $result =db_query($connection,$query);
     if($result===false)
     {
@@ -53,7 +113,9 @@ function addNewPost($title,$content,$category,$author_id,$image, $published)
 function updatePost($postId,$title,$content,$category,$image, $published)
 {
     global $connection;
-    $query="UPDATE posts set title='$title', content='$content',category='$category', image='$image', published='$published' WHERE id='$postId'";
+    $query="UPDATE posts 
+            set title='$title', content='$content',category='$category', image='$image', published='$published' 
+            WHERE id='$postId'";
     $result =db_query($connection,$query);
     if($result===false)
     {
@@ -116,7 +178,10 @@ function createUser($username,$email,$password)
 function checkEmailExists($email)
 {
     global $connection;
-    $query= "SELECT * FROM users WHERE email='$email' LIMIT 2";
+    $query= "SELECT * 
+             FROM users 
+             WHERE email='$email' 
+             LIMIT 2";
     $result= mysqli_num_rows( db_query($connection,$query));
     if($result>0)
     {
@@ -131,13 +196,19 @@ function checkEmailExists($email)
 function getUserByEmail($email)
 {
     global $connection;
-    $query= "SELECT * FROM users WHERE email='$email' LIMIT 1";
+    $query= "SELECT * 
+             FROM users 
+             WHERE email='$email' 
+             LIMIT 1";
     return db_select($connection,$query)[0];
 }
 function getUserById($id)
 {
     global $connection;
-    $query= "SELECT * FROM users WHERE id='$id' LIMIT 1";
+    $query= "SELECT * 
+             FROM users 
+             WHERE id='$id' 
+             LIMIT 1";
     return db_select($connection,$query)[0];
 }
 
@@ -149,21 +220,26 @@ function getUserById($id)
 function incrementPostViews($id)
 {
     global $connection;
-    $query="UPDATE posts set views=views+1 WHERE id='$id'";
+    $query="UPDATE posts 
+            set views=views+1 
+            WHERE id='$id'";
     return db_query($connection,$query);
 }
 
 function deletPost($id)
 {
     global $connection;
-    $query= "DELETE FROM posts WHERE id='$id'";
+    $query="DELETE FROM posts 
+            WHERE id='$id'";
     return db_query($connection,$query);
 }
 
 function replacePostImage($id, $newImage)
 {
     global $connection;
-    $query="UPDATE posts set image='$newImage' WHERE id='$id'";
+    $query="UPDATE posts 
+            set image='$newImage' 
+            WHERE id='$id'";
     return db_query($connection,$query);
 }
 

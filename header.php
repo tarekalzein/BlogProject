@@ -17,10 +17,10 @@ else{
 <i class="fa fa-bars menu_button"></i>
 <ul class="nav">
     <li><a href="index.php">Home</a></li>
-    <li><a href="#">Politics</a></li>
-    <li><a href="#">Tech</a></li>
-    <li><a href="#">Entertainment</a></li>
-    <li><a href="#">Travel</a></li>
+    <li><a href="topics.php?category=politics">Politics</a></li>
+    <li><a href="topics.php?category=tech">Tech</a></li>
+    <li><a href="topics.php?category=entertainment">Entertainment</a></li>
+    <li><a href="topics.php?category=travel">Travel</a></li>
     <?php echo $link ?>
     <li></li>
 

@@ -5,8 +5,9 @@ if(isset($_GET['logout']))
     session_unset();
     session_destroy();
 }
-$posts=getAllPublishedPosts();
+$posts=getRecentPublishedPosts();
 $trendingPosts=getTrendingPosts();
+$users=getTopUsers();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,10 +41,10 @@ $trendingPosts=getTrendingPosts();
                 <img src="<?php echo $trendingPost['image'];?>" alt="" class="slider-image">
                 <div class="post-info">
                     <h4><a class="post-title" href="post.php?id=<?php echo $trendingPost['id'];?>"><?php echo $trendingPost['title']?></a></h4>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $trendingPost['username']?></a>
+                    <i class="far fa-user">   &nbsp; </i><a href="topics.php?user=<?php echo $trendingPost['author_id']?>" class="post-author"><?php echo $trendingPost['username']?></a>
                     &nbsp;
                     <i class="far fa-calendar">&nbsp;</i><span><?php echo $trendingPost['date']?></span>
-                    <a href="#" class="post-category <?php echo $trendingPost['category'];?>"><?php echo $trendingPost['category']?></a>
+                    <a href="topics.php?category=<?php echo $trendingPost['category']; ?>" class="post-category <?php echo $trendingPost['category'];?>"><?php echo $trendingPost['category']?></a>
                 </div>
             </div>
             <?php endforeach;?>
@@ -57,29 +58,39 @@ $trendingPosts=getTrendingPosts();
     <div class="main-content-wrapper clearfix">
         <div class="main-content">
             <h2 class="recent-posts-title">Recent Posts</h2>
-            <br>
             <?php foreach ($posts as $post): ?>
             <div class="post">
                 <img class="post-image" src="<?php echo $post['image'];?>" alt="">
                 <div class="post-preview">
                     <h2><a href="post.php?id=<?php echo $post['id'];?>" class="post-title"><?php echo $post['title'];?></a></h2>
-                    <i class="far fa-user">   &nbsp; </i><a href="#" class="post-author"><?php echo $post['username'];?></a>
+                    <i class="far fa-user">   &nbsp; </i><a href="topics.php?user=<?php echo $post['author_id']?>" class="post-author"><?php echo $post['username'];?></a>
                     <i class="far calendar">&nbsp;</i><span><?php echo $post['date'];?></span>
                     <p class="preview-txt">
                         <?php echo (substrwords(strip_tags($post['content']),200)) ;?> <!--//strip tags is used to clear formatting.-->
                     </p>
                     <a href="post.php?id=<?php echo $post['id'];?>" class="btn read-more">Read More...</a>
-                    <a href="#" class="post-category <?php echo $post['category'];?>"><?php echo $post['category'];?></a>
+                    <a href="topics.php?category=<?php echo $post['category']; ?>" class="post-category <?php echo $post['category'];?>"><?php echo $post['category'];?></a>
                 </div>
             </div>
             <?php endforeach; ?>
-
+            <div class="show-all-btn"><a href="topics.php?category=all">Show all posts</a></div>
         </div>
         <!--End of Main Content-->
 
 
         <div class="side-bar">
             <!--TODO: add a place to show recent bloggers and button to show all bloggers.-->
+            <div class="top-users-box">
+                <h3>Top Bloggers:</h3>
+                <ul>
+                    <?php foreach ($users as $user): ?>
+                        <li><a href="topics.php?user=<?php echo $user['author_id'];?>"><?php echo $user['username'];?> </a>&nbsp (<?php echo $user['totalPosts']?> posts)</li>
+                    <?php endforeach;?>
+
+                </ul>
+                <a href="users.php" class="show-all-users-btn"> Show All.</a>
+            </div>
+
         </div>
 
 

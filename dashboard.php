@@ -97,7 +97,14 @@ else
 
             <div id="myProfile" class="tabcontent">
                 <h3>My Profile</h3>
-                <p>This tab will show info about the user's profile.</p>
+                Username: <br>
+                <?php echo $user['username'] ?>
+                <br><br>
+                Email: <br>
+                <?php echo $user['email'] ?>
+                <br>
+                <br>
+
             </div>
 
         </div>
