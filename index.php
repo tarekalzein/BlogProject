@@ -21,6 +21,8 @@ $users=getTopUsers();
     <script src="https://kit.fontawesome.com/dedb547a55.js" crossorigin="anonymous"></script>
 <!--    Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="This Blog is project for the course D0019E-Webbutveckling II - Skriptspråk och databaser at Luleå university of technology">
     <title>SomeBlog Homepage</title>
 
 </head>
@@ -68,7 +70,7 @@ $users=getTopUsers();
                 <div class="post-preview">
                     <h2><a href="post.php?id=<?php echo $post['id'];?>" class="post-title"><?php echo $post['title'];?></a></h2>
                     <i class="far fa-user">   &nbsp; </i><a href="topics.php?user=<?php echo $post['author_id']?>" class="post-author"><?php echo $post['username'];?></a>
-                    <i class="far calendar">&nbsp;</i><span><?php echo $post['date'];?></span>
+                    <i class="far calendar">&nbsp;</i><span><?php echo  ((new DateTime($post['date']))->format('Y-m-d'));?></span>
                     <p class="preview-txt">
                         <?php echo (substrwords(strip_tags($post['content']),200)) ;?> <!--//strip tags is used to clear formatting.-->
                     </p>
@@ -89,7 +91,7 @@ $users=getTopUsers();
                     <?php foreach ($users as $user): ?>
                         <li>
                             <a href="topics.php?user=<?php echo $user['author_id'];?>"><?php echo $user['username'];?> </a>
-                            &nbsp (<?php echo $user['totalPosts'];
+                            &nbsp; (<?php echo $user['totalPosts'];
                                     if($user['totalPosts']==1){ echo ' post';}
                                     else echo ' posts';?> )
                         </li>
@@ -106,10 +108,11 @@ $users=getTopUsers();
 </div>
 
 <!--Slick JS script import using cdn.-->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-</body>
+
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>

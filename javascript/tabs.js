@@ -1,3 +1,4 @@
+//Script to be used in dashboard.php to show tabs and automatically open the posts tab.
 // Get the element with id="defaultOpen" and click on it
 $(document).ready(function()
 {

@@ -3,7 +3,7 @@
 include ('controllers/verify.php');
 if(isset($_GET['delete']))
 {
-    deletPost($_GET['delete']);
+    deletePost($_GET['delete']);
     header('location: dashboard.php');
 }
 if(isset($_GET['delete-image']))
@@ -72,7 +72,7 @@ else
                 <option value="travel" <?php if($post['category']==='travel'){echo 'selected="selected"';}?>>Travel</option>
             </select>
             <br>
-            <input name="published" type="checkbox" value="1"<?php if($post['published']) echo "checked"?> > Publish
+            <input name="published" type="checkbox"  <?php if($post['published']) echo "checked"?> > Publish
             <br>
             <h2>Post Image</h2>
             <?php if($post['image']==='images/placeholder.jpg')
@@ -103,10 +103,10 @@ else
 </div>
 <!--script of CKEditor for rich text in textarea.-->
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
-<script type="text/javascript" src="javascript/scripts.js"></script>
+<script src="javascript/scripts.js"></script>
 
-</body>
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>

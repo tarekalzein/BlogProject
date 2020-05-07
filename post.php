@@ -28,7 +28,7 @@ else
 <!--    <meta name="viewport" content="width=device-width,initial-scale=1.0">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="javascript/scripts.js"></script>
+    <script src="javascript/scripts.js"></script>
 
     <!--    Font Awesome implementation-->
     <script src="https://kit.fontawesome.com/dedb547a55.js" crossorigin="anonymous"></script>
@@ -46,7 +46,7 @@ else
         <div class="single-post">
             <h1 class="title"><?php echo $post['title']?></h1>
             <h4>By <?php echo $post['username']?></h4>
-            <h5>Published: <?php echo $post['date']?></h5>
+            <h5>Published: <?php echo ((new DateTime($post['date']))->format('Y-m-d'));?></h5>
             <img src="<?php echo $post['image']?>" alt="">
             <div class="post-content"><?php echo $post['content']?></div>
         </div>
@@ -55,8 +55,8 @@ else
 
 
 </div>
-</body>
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>

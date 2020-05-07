@@ -26,13 +26,13 @@
         <h1> 403 </h1>
         <h2>Access Denied or Forbidden</h2>
         <h4>Please Log in or sign up to view this page.</h4>
-        <h4><a href="login.php">Log in</a> &nbsp or &nbsp <a href="register.php">Sign up</a></h4>
+        <h4><a href="login.php">Log in</a> &nbsp; or &nbsp; <a href="register.php">Sign up</a></h4>
     </div>
 </div>
 
 
-</body>
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>

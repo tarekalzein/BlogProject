@@ -1,5 +1,12 @@
 <?php
+/**
+ * verify.php is a controller php file that controls the inputs from users for:registration, login, new and edit posts.
+ * it loops through user inputs and shows/pops up notifications about errors in inputs
+ */
 include ('db/sql_query.php');
+/**
+ * Verification of the login.php form.
+ */
 if(isset($_POST['login']))
 {
     $errors=array();
@@ -28,10 +35,12 @@ if(isset($_POST['login']))
             }
             else
                 array_push($errors,"wrong email or password");
-
         }
     }
 }
+/**
+ * Verification of the registration.
+ */
 if(isset($_POST['register']))
 {
     $errors=array();
@@ -82,7 +91,10 @@ if(isset($_POST['register']))
             }
     }
 }
-
+/**
+ * method to verify inputs of new.php where user can create a new blog post with image.
+ * @return string error or success message after creating/adding the post with images (if exists) to the database.
+ */
 function verifyForm()
 {
     //Form input checks:
@@ -141,7 +153,7 @@ function verifyForm()
         if($uploadOk==1)
         {
 //            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
-            $target_file=$target_dir."user".$author_id."-". $_POST['title'].'.'.$imageFileType;
+            $target_file=$target_dir."user".$author_id."-".str_replace(' ', '-', $_POST['title']).'.'.$imageFileType;
             if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $image= $target_file;
@@ -155,7 +167,8 @@ function verifyForm()
     }
     if($uploadOk== 1&& $formOk==1)
     {
-        if(addNewPost($_POST['title'],$_POST['content'],$_POST['category'],$author_id,$image,$_POST['published']))
+        $published=(isset($_POST['published']))? 1: 0;
+        if(addNewPost($_POST['title'],$_POST['content'],$_POST['category'],$author_id,$image,$published))
         {
 //                   If input is saved then pop a SweetAlert alert then redirect to dashboard.php (PRG 'POST/RETURN/GET' pattern)
             echo "<script type='text/javascript'>";
@@ -167,6 +180,12 @@ function verifyForm()
     }
 }
 
+/**
+ * Method similar to verifyForm, the difference is that it is used on edit.php where user can edit an existing blog post.
+ * @param $postId id of the post to be edited/modified.
+ * @param $postImage path of the existing image to be deleted/modified/kept.
+ * @return string
+ */
 function editPost($postId,$postImage)
 {
     //Form input checks:
@@ -226,7 +245,7 @@ function editPost($postId,$postImage)
         {
             unlink($postImage);
 //            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
-            $target_file=$target_dir."user".$author_id."-". $_POST['title'].'.'.$imageFileType;
+            $target_file=$target_dir."user".$author_id."-". str_replace(' ', '-', $_POST['title']).'.'.$imageFileType;
             if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $image= $target_file;
@@ -239,8 +258,8 @@ function editPost($postId,$postImage)
         $image=$postImage;
     }
     if($uploadOk== 1&& $formOk==1)
-
-        if(updatePost($postId,$_POST['title'],$_POST['content'],$_POST['category'],$image,$_POST['published']))
+        $published=(isset($_POST['published']))? 1: 0;
+    if(updatePost($postId,$_POST['title'],$_POST['content'],$_POST['category'],$image,$published))
         {
 //                  If input is saved then pop a SweetAlert alert then redirect to dashboard.php (PRG 'POST/RETURN/GET' pattern)
             echo "<script type='text/javascript'>";
@@ -251,7 +270,11 @@ function editPost($postId,$postImage)
         }
 }
 
-
+/**
+ * Method to remove a post image directly from database.
+ * @param $postId int the post that its image must be deleted.
+ * @return bool true on success.
+ */
 function deleteImage($postId)
 {
     $post=selectOneRecord($postId);

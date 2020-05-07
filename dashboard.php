@@ -1,5 +1,8 @@
 <?php
 include ('db/sql_query.php');
+/**
+ * Dashboard.php is available only for logged in users and shows all user's posts.
+ */
 if(isset($_SESSION['id']))
 {
     $id = $_SESSION['id'];
@@ -20,7 +23,7 @@ else
 <!--    <meta name="viewport" content="width=device-width,initial-scale=1.0">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="javascript/scripts.js"></script>
+    <script src="javascript/scripts.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--    Font Awesome implementation-->
@@ -74,7 +77,7 @@ else
                             <?php
                             if(isset($_GET['delete']))
                             {
-                                echo "<script type='text/javascript'>
+                                echo "<script>
                                         swal(\"Are you sure you want to do this?\", {
                                         buttons: ['Delete', 'Cancel'],}).then(willDelete => {
                                         if (!willDelete) {
@@ -115,9 +118,9 @@ else
 
 </div>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript" src="javascript/tabs.js"></script>
-</body>
+<script src="javascript/tabs.js"></script>
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>

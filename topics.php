@@ -76,7 +76,7 @@ else
                     <div class="post-preview">
                         <h2><a href="post.php?id=<?php echo $post['id'];?>" class="post-title"><?php echo $post['title'];?></a></h2>
                         <i class="far fa-user">   &nbsp; </i><a href="topics.php?user=<?php echo $post['author_id']?>" class="post-author"><?php echo $post['username'];?></a>
-                        <i class="far calendar">&nbsp;</i><span><?php echo $post['date'];?></span>
+                        <i class="far calendar">&nbsp;</i><span><?php echo ((new DateTime($post['date']))->format('Y-m-d'));?></span>
                         <p class="preview-txt">
                             <?php echo (substrwords(strip_tags($post['content']),200)) ;?> <!--//strip tags is used to clear formatting.-->
                         </p>
@@ -98,10 +98,10 @@ else
 </div>
 
 <!--Slick JS script import using cdn.-->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-</body>
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>

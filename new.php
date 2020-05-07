@@ -45,7 +45,7 @@ include ('controllers/verify.php');
                 <option value="travel" <?php if(isset($_POST['category'])&&$_POST['category']==='travel'){echo 'selected="selected"';}?>>Travel</option>
             </select>
             <br>
-            <input name="published" type="checkbox" value="1"> Publish
+            <input name="published" type="checkbox"> Publish
             <br>
             <h2>Post Image</h2>
             <input type="file" name="fileToUpload" accept="image/*">
@@ -62,10 +62,11 @@ include ('controllers/verify.php');
 </div>
 <!--script of CKEditor for rich text in textarea.-->
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
-<script type="text/javascript" src="javascript/scripts.js"></script>
+<script src="javascript/scripts.js"></script>
 
-</body>
+
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>

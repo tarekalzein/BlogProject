@@ -10,7 +10,7 @@ global $errors;
 <!--    <meta name="viewport" content="width=device-width,initial-scale=1.0">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="javascript/scripts.js"></script>
+    <script src="javascript/scripts.js"></script>
 
     <!-- Sweet Alert Custom Alert  https://sweetalert.js.org/guides/ -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -60,8 +60,8 @@ global $errors;
 
 
     </div>
-</body>
 <footer>
     <?php include ('footer.php');?>
 </footer>
+</body>
 </html>
