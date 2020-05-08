@@ -11,17 +11,17 @@
     <div class="footer-section links">
         <h2>Quick Links</h2>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Advertise</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="under_construction.php">About</a></li>
+            <li><a href="under_construction.php">Advertise</a></li>
+            <li><a href="under_construction.php">Careers</a></li>
+            <li><a href="under_construction.php">Privacy Policy</a></li>
+            <li><a href="under_construction.php">Terms of Service</a></li>
         </ul>
     </div>
     <div class="footer-section contact-form">
         <h2>Subscribe to our newsletter</h2>
-        <form action="#" method="POST">
+        <form action="under_construction.php" method="POST">
             <input type="email" name="email" placeholder="Your email address..." class="newsletter-input-box">
             <button type="submit">
                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -29,12 +29,12 @@
         </form>
         <br>
         <div class="socials">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="under_construction.php"><i class="fab fa-facebook"></i></a>
+            <a href="under_construction.php"><i class="fab fa-twitter"></i></a>
+            <a href="under_construction.php"><i class="fab fa-github"></i></a>
+            <a href="under_construction.php"><i class="fab fa-linkedin"></i></a>
+            <a href="under_construction.php"><i class="fab fa-youtube"></i></a>
+            <a href="under_construction.php"><i class="fas fa-envelope"></i></a>
 
         </div>
 
