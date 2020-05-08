@@ -10,7 +10,7 @@ if(isset($_GET['id']))
         header('location: denied.php');
     }
     //Increment only if other users than the publisher are visiting the paqe.
-    else if($post['author_id']!=$_SESSION['id']){
+    else if(!isset($_SESSION['id']) || $post['author_id']!=$_SESSION['id']){
         incrementPostViews($postId);
     }
 }
