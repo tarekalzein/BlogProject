@@ -160,6 +160,8 @@ function selectOneRecord($id)
 function addNewPost($title,$content,$category,$author_id,$image, $published)
 {
     global $connection;
+    $title=mysqli_real_escape_string($connection,$title);
+    $content=mysqli_real_escape_string($connection,$content);
     $query= "INSERT INTO posts (title,content,category,author_id,image,published)".
             " VALUES ('$title','$content','$category','$author_id','$image','$published')";
     $result =db_query($connection,$query);
@@ -185,6 +187,8 @@ function addNewPost($title,$content,$category,$author_id,$image, $published)
 function updatePost($postId,$title,$content,$category,$image, $published)
 {
     global $connection;
+    $title=mysqli_real_escape_string($connection,$title);
+    $content=mysqli_real_escape_string($connection,$content);
     $query="UPDATE posts 
             set title='$title', content='$content',category='$category', image='$image', published='$published' 
             WHERE id='$postId'";

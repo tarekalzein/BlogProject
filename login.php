@@ -54,6 +54,7 @@ global $errors;
                     <br>
                  </form>
             <h4>Don't have an account? <a href="register.php">sign up!</a></h4>
+            <p>This website uses cookies to log users in. Data is not shared to any 3rd party nor used for any other means.</p>
         </div>
 
     </div>

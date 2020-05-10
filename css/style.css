@@ -215,12 +215,14 @@ header .logged-in
 .main-content-wrapper .main-content .post .post-preview h2
 {
     margin: 10px auto 5px auto;
+    max-width: 75%;
+    text-align: justify;
 }
 .main-content-wrapper .main-content .post .post-preview .post-title
 {
     text-decoration: none;
     color: #202639;
-    margin: 0;
+    /*margin: 0;*/
     padding:0 ;
 
     /*font-size: 0.8em;*/

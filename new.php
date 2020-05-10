@@ -64,7 +64,6 @@ include ('controllers/verify.php');
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 <script src="javascript/scripts.js"></script>
 
-
 <footer>
     <?php include ('footer.php');?>
 </footer>

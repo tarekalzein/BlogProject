@@ -107,10 +107,10 @@ function verifyForm()
         $formOk=0;
         return "<script type='text/javascript'>swal({title: 'Title is required', icon:'error'});</script>";
     }
-    if(strlen($_POST['title'])>60)
+    if(strlen($_POST['title'])>100)
     {
         $formOk=0;
-        return "<script type='text/javascript'>swal({title: 'Title is too big',text:'Maximum number of characters: 60', icon:'error'});</script>";
+        return "<script type='text/javascript'>swal({title: 'Title is too big',text:'Maximum number of characters: 100', icon:'error'});</script>";
     }
     if(empty($_POST['content']))
     {
@@ -198,10 +198,10 @@ function editPost($postId,$postImage)
         $formOk=0;
         return "<script type='text/javascript'>swal({title: 'Title is required', icon:'error'});</script>";
     }
-    if(strlen($_POST['title'])>60)
+    if(strlen($_POST['title'])>100)
     {
         $formOk=0;
-        return "<script type='text/javascript'>swal({title: 'Title is too big',text:'Maximum number of characters: 60', icon:'error'});</script>";
+        return "<script type='text/javascript'>swal({title: 'Title is too big',text:'Maximum number of characters: 100', icon:'error'});</script>";
     }
     if(empty($_POST['content']))
     {
