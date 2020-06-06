@@ -153,7 +153,7 @@ function verifyForm()
         if($uploadOk==1)
         {
 //            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
-            $target_file=$target_dir."user".$author_id."-".str_replace(' ', '-', $_POST['title']).'.'.$imageFileType;
+            $target_file=$target_dir."user".$author_id."-".str_replace(' ', '-', $_POST['title']).mktime().'.'.$imageFileType; //mktime adds unix timestamp, this will make image file name unique.
             if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $image= $target_file;
@@ -245,7 +245,7 @@ function editPost($postId,$postImage)
         {
             unlink($postImage);
 //            $target_file=$target_dir. $_POST['title']."-".$_FILES["fileToUpload"]["name"];
-            $target_file=$target_dir."user".$author_id."-". str_replace(' ', '-', $_POST['title']).'.'.$imageFileType;
+            $target_file=$target_dir."user".$author_id."-". str_replace(' ', '-', $_POST['title']).mktime().'.'.$imageFileType;
             if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $image= $target_file;

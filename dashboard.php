@@ -77,6 +77,11 @@ else
                             <?php
                             if(isset($_GET['delete']))
                             {
+                                $thisPost= selectOneRecord($_GET['delete']);
+                                if($user['id']!==$thisPost['author_id'])
+                                {
+                                    header('location: denied.php');
+                                }
                                 echo "<script>
                                         swal(\"Are you sure you want to do this?\", {
                                         buttons: ['Delete', 'Cancel'],}).then(willDelete => {

@@ -3,7 +3,12 @@
 include ('controllers/verify.php');
 if(isset($_GET['delete']))
 {
-    deletePost($_GET['delete']);
+    $post=selectOneRecord($_GET['delete']);
+    if($post['image']!='images/placeholder.jpg')
+    {
+        unlink($post['image']);
+    }
+    deletePost($post['id']);
     header('location: dashboard.php');
 }
 if(isset($_GET['delete-image']))
